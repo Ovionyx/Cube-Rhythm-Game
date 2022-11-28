@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ctsn8ukkrvk46"]
+
+[ext_resource type="Texture2D" uid="uid://dfsy1dsssfb8r" path="res://icon.svg" id="1_edf5b"]
+[ext_resource type="Texture2D" uid="uid://crkitwc5dgxm1" path="res://icon_emission.svg" id="2_uvo5l"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 2
+albedo_texture = ExtResource("1_edf5b")
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("2_uvo5l")

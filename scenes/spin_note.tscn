@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4o858w7dfd6s"]
+
+[ext_resource type="Script" path="res://scripts/SpinNote.gd" id="1_4704x"]
+[ext_resource type="Material" uid="uid://dt8j3qo25yv3q" path="res://resources/note.tres" id="2_jpcqc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsp5b"]
+material = ExtResource("2_jpcqc")
+size = Vector3(0.4, 0.4, 0.1)
+subdivide_width = 1
+
+[sub_resource type="Curve" id="Curve_2oq1l"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eendf"]
+curve = SubResource("Curve_2oq1l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qcytv"]
+emission_shape = 3
+emission_box_extents = Vector3(0.15, 0.15, 0)
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, 1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_curve = SubResource("CurveTexture_eendf")
+
+[sub_resource type="BoxMesh" id="BoxMesh_myjtx"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Note" type="Node3D"]
+script = ExtResource("1_4704x")
+
+[node name="a" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 4.5)
+
+[node name="mesh" type="MeshInstance3D" parent="a"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+mesh = SubResource("BoxMesh_dsp5b")
+skeleton = NodePath("../..")
+
+[node name="particles" type="GPUParticles3D" parent="a"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+material_override = ExtResource("2_jpcqc")
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_qcytv")
+draw_pass_1 = SubResource("BoxMesh_myjtx")
+
+[node name="b" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -4.5)
+
+[node name="mesh" type="MeshInstance3D" parent="b"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+mesh = SubResource("BoxMesh_dsp5b")
+skeleton = NodePath("../..")
+
+[node name="particles" type="GPUParticles3D" parent="b"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 0, 0)
+material_override = ExtResource("2_jpcqc")
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_qcytv")
+draw_pass_1 = SubResource("BoxMesh_myjtx")

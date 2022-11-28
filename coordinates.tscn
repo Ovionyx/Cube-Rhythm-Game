@@ -1,0 +1,143 @@
+[gd_scene load_steps=18 format=3 uid="uid://b3df25cw152kw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a3tox"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.5, 0.5, 0.5, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Sky" id="Sky_ehf4j"]
+sky_material = SubResource("ProceduralSkyMaterial_a3tox")
+
+[sub_resource type="Environment" id="Environment_ovgor"]
+background_mode = 2
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_ehf4j")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_vowc7"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1d5i8"]
+gradient = SubResource("Gradient_vowc7")
+
+[sub_resource type="Curve" id="Curve_w0xqa"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fhxc3"]
+curve = SubResource("Curve_w0xqa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7cfrf"]
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 1, 0.1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_fhxc3")
+color = Color(0, 1, 1, 1)
+color_ramp = SubResource("GradientTexture1D_1d5i8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1414"]
+emission_enabled = true
+emission = Color(1, 0.454902, 0.321569, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ei1p7"]
+material = SubResource("StandardMaterial3D_g1414")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xchqw"]
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 1.732, 0.1)
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1qrl5"]
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 1.414, 0.1)
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ujhov"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="Gradient" id="Gradient_bw2cl"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tvc6j"]
+gradient = SubResource("Gradient_bw2cl")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vq6di"]
+albedo_texture = SubResource("GradientTexture2D_tvc6j")
+
+[sub_resource type="SphereMesh" id="SphereMesh_c2241"]
+material = SubResource("StandardMaterial3D_vq6di")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ovgor")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -6)
+process_material = SubResource("ParticleProcessMaterial_7cfrf")
+draw_pass_1 = SubResource("SphereMesh_ei1p7")
+
+[node name="GPUParticles3D9" type="GPUParticles3D" parent="."]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 1, -6)
+process_material = SubResource("ParticleProcessMaterial_7cfrf")
+draw_pass_1 = SubResource("SphereMesh_ei1p7")
+
+[node name="GPUParticles3D10" type="GPUParticles3D" parent="."]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, -1, -8)
+process_material = SubResource("ParticleProcessMaterial_7cfrf")
+draw_pass_1 = SubResource("SphereMesh_ei1p7")
+
+[node name="GPUParticles3D11" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 4.37114e-08, 0, -4.37114e-08, 1, 0, 0, 0, 1, -1, 0, -8)
+process_material = SubResource("ParticleProcessMaterial_7cfrf")
+draw_pass_1 = SubResource("SphereMesh_ei1p7")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1, 1, -3)
+process_material = SubResource("ParticleProcessMaterial_7cfrf")
+draw_pass_1 = SubResource("SphereMesh_ei1p7")
+
+[node name="GPUParticles3D13" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, 1, 0, 1)
+process_material = SubResource("ParticleProcessMaterial_7cfrf")
+draw_pass_1 = SubResource("SphereMesh_ei1p7")
+
+[node name="GPUParticles3D7" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.408607, -0.577096, -0.707107, 0.816138, 0.577858, 0, 0.408607, -0.577096, 0.707107, 0, 0, -3)
+process_material = SubResource("ParticleProcessMaterial_xchqw")
+draw_pass_1 = SubResource("SphereMesh_ei1p7")
+
+[node name="GPUParticles3D8" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.408607, -0.577096, 0.707107, 0.816137, 0.577858, -1.77636e-15, -0.408607, 0.577096, 0.707107, 0, 0, -3)
+process_material = SubResource("ParticleProcessMaterial_xchqw")
+draw_pass_1 = SubResource("SphereMesh_ei1p7")
+
+[node name="GPUParticles3D12" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.408607, -0.577096, 0.707107, 0.816137, 0.577858, -1.77636e-15, -0.408607, 0.577096, 0.707107, 0, 0, -7)
+process_material = SubResource("ParticleProcessMaterial_xchqw")
+draw_pass_1 = SubResource("SphereMesh_ei1p7")
+
+[node name="GPUParticles3D6" type="GPUParticles3D" parent="."]
+transform = Transform3D(-3.09086e-08, -0.707107, -0.707107, 1, -4.37114e-08, 0, -3.09086e-08, -0.707107, 0.707107, 0, 1, 0)
+process_material = SubResource("ParticleProcessMaterial_1qrl5")
+draw_pass_1 = SubResource("SphereMesh_ujhov")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 0)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 1)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_c2241")
+skeleton = NodePath("")

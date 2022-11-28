@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bimdhcjrc1k6m"]
+
+[ext_resource type="Script" path="res://scripts/HeldNote.gd" id="1_3rjcu"]
+[ext_resource type="Material" uid="uid://dt8j3qo25yv3q" path="res://resources/note.tres" id="2_g5wjd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_23edd"]
+material = ExtResource("2_g5wjd")
+size = Vector3(0.4, 0.4, 1)
+subdivide_width = 1
+
+[node name="Note" type="Node3D"]
+script = ExtResource("1_3rjcu")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_g5wjd")
+mesh = SubResource("BoxMesh_23edd")

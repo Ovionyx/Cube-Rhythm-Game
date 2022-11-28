@@ -1,0 +1,15 @@
+[gd_resource type="Environment" format=3 uid="uid://b4jpufi6f65qy"]
+
+[resource]
+background_mode = 1
+ssil_enabled = true
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.1
+glow_bloom = 1.0
+glow_blend_mode = 0
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.2
+volumetric_fog_albedo = Color(0.0196078, 0.0196078, 0.0196078, 1)
+volumetric_fog_anisotropy = -0.9
+volumetric_fog_temporal_reprojection_enabled = false

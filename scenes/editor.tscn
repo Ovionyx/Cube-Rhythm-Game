@@ -1,0 +1,465 @@
+[gd_scene load_steps=21 format=3 uid="uid://cjti4y2difmkh"]
+
+[ext_resource type="Script" path="res://scripts/editor.gd" id="1_rrmob"]
+[ext_resource type="Script" path="res://scripts/Ruler.gd" id="2_ui30h"]
+[ext_resource type="Script" path="res://scripts/Staff.gd" id="3_inlrh"]
+[ext_resource type="Texture2D" uid="uid://dfdyxpwaumdlh" path="res://assets/replay.svg" id="4_op3f3"]
+[ext_resource type="PackedScene" uid="uid://cvfj1u0abat0c" path="res://scenes/new_chart_dialog.tscn" id="5_kd0ym"]
+[ext_resource type="Texture2D" uid="uid://couygqgmmruus" path="res://assets/play_early.svg" id="5_mxm0q"]
+[ext_resource type="PackedScene" uid="uid://lchfcqd5mk4b" path="res://scenes/open_chart_dialog.tscn" id="6_oylum"]
+[ext_resource type="Texture2D" uid="uid://ccyv8orjqr2rw" path="res://assets/play.svg" id="6_ydjqa"]
+[ext_resource type="PackedScene" uid="uid://dqwejvn17wjlx" path="res://scenes/save_changes_dialog.tscn" id="9_4bdoc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbfd8"]
+bg_color = Color(1, 0.74902, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyxoc"]
+bg_color = Color(0, 0.498039, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54sca"]
+bg_color = Color(0, 1, 0.247059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wf0dp"]
+bg_color = Color(1, 0, 0.247059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mtt4"]
+bg_color = Color(1, 0.498039, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="InputEventKey" id="InputEventKey_2dsl2"]
+shift_pressed = true
+keycode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_rtrfc"]
+events = [SubResource("InputEventKey_2dsl2")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_icjof"]
+ctrl_pressed = true
+keycode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_hreco"]
+events = [SubResource("InputEventKey_icjof")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_cufyk"]
+keycode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_h3luc"]
+events = [SubResource("InputEventKey_cufyk")]
+
+[node name="Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rrmob")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MainPanel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MainVBox" type="BoxContainer" parent="MainPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="MenuBar" type="MenuBar" parent="MainPanel/MainVBox"]
+offset_right = 1152.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+
+[node name="File" type="PopupMenu" parent="MainPanel/MainVBox/MenuBar"]
+item_count = 4
+item_0/text = "New"
+item_0/id = 0
+item_1/text = "Open"
+item_1/id = 1
+item_2/text = "Save"
+item_2/id = 2
+item_3/text = "Run"
+item_3/id = 3
+
+[node name="EditorVBox" type="BoxContainer" parent="MainPanel/MainVBox"]
+anchors_preset = -1
+offset_top = 35.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+vertical = true
+
+[node name="Staff" type="GridContainer" parent="MainPanel/MainVBox/EditorVBox"]
+offset_right = 1152.0
+offset_bottom = 569.0
+size_flags_vertical = 3
+columns = 2
+
+[node name="Dummy2" type="Control" parent="MainPanel/MainVBox/EditorVBox/Staff"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 30.0
+offset_bottom = 20.0
+
+[node name="Ruler" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2i(0, 20)
+offset_left = 34.0
+offset_right = 1152.0
+offset_bottom = 20.0
+script = ExtResource("2_ui30h")
+
+[node name="Indicators" type="BoxContainer" parent="MainPanel/MainVBox/EditorVBox/Staff"]
+custom_minimum_size = Vector2i(30, 0)
+offset_top = 24.0
+offset_right = 30.0
+offset_bottom = 557.0
+vertical = true
+
+[node name="Panel" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators"]
+offset_right = 30.0
+offset_bottom = 49.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_vbfd8")
+
+[node name="Label" type="Label" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators/Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "G"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators"]
+offset_top = 53.0
+offset_right = 30.0
+offset_bottom = 103.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_vbfd8")
+
+[node name="Label" type="Label" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators/Panel2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "H"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel3" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators"]
+offset_top = 107.0
+offset_right = 30.0
+offset_bottom = 157.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lyxoc")
+
+[node name="Label" type="Label" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators/Panel3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel4" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators"]
+offset_top = 161.0
+offset_right = 30.0
+offset_bottom = 210.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lyxoc")
+
+[node name="Label" type="Label" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators/Panel4"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "J"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel5" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators"]
+offset_top = 214.0
+offset_right = 30.0
+offset_bottom = 264.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_54sca")
+
+[node name="Label" type="Label" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators/Panel5"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel6" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators"]
+offset_top = 268.0
+offset_right = 30.0
+offset_bottom = 318.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_54sca")
+
+[node name="Label" type="Label" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators/Panel6"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "L"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel7" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators"]
+offset_top = 322.0
+offset_right = 30.0
+offset_bottom = 371.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wf0dp")
+
+[node name="Label" type="Label" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators/Panel7"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel8" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators"]
+offset_top = 375.0
+offset_right = 30.0
+offset_bottom = 425.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wf0dp")
+
+[node name="Label" type="Label" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators/Panel8"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel9" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators"]
+offset_top = 429.0
+offset_right = 30.0
+offset_bottom = 479.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0mtt4")
+
+[node name="Label" type="Label" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators/Panel9"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel10" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators"]
+offset_top = 483.0
+offset_right = 30.0
+offset_bottom = 533.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0mtt4")
+
+[node name="Label" type="Label" parent="MainPanel/MainVBox/EditorVBox/Staff/Indicators/Panel10"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "D
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Base" type="Control" parent="MainPanel/MainVBox/EditorVBox/Staff"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 34.0
+offset_top = 24.0
+offset_right = 1152.0
+offset_bottom = 557.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StaffPanel" type="Panel" parent="MainPanel/MainVBox/EditorVBox/Staff/Base"]
+unique_name_in_owner = true
+texture_filter = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_right = 4085.0
+grow_vertical = 2
+script = ExtResource("3_inlrh")
+
+[node name="Dummy" type="Control" parent="MainPanel/MainVBox/EditorVBox/Staff"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 561.0
+offset_right = 30.0
+offset_bottom = 569.0
+
+[node name="StaffScroll" type="HScrollBar" parent="MainPanel/MainVBox/EditorVBox/Staff"]
+unique_name_in_owner = true
+offset_left = 34.0
+offset_top = 561.0
+offset_right = 1152.0
+offset_bottom = 569.0
+max_value = 64.0
+page = 16.0
+
+[node name="Controls" type="HFlowContainer" parent="MainPanel/MainVBox/EditorVBox"]
+offset_top = 573.0
+offset_right = 1152.0
+offset_bottom = 613.0
+
+[node name="BPMContainer" type="HBoxContainer" parent="MainPanel/MainVBox/EditorVBox/Controls"]
+offset_right = 115.0
+offset_bottom = 40.0
+
+[node name="BPMLabel" type="Label" parent="MainPanel/MainVBox/EditorVBox/Controls/BPMContainer"]
+offset_top = 7.0
+offset_right = 44.0
+offset_bottom = 33.0
+text = "BPM: "
+
+[node name="BPMField" type="LineEdit" parent="MainPanel/MainVBox/EditorVBox/Controls/BPMContainer"]
+unique_name_in_owner = true
+offset_left = 48.0
+offset_right = 115.0
+offset_bottom = 40.0
+focus_neighbor_bottom = NodePath(".")
+placeholder_text = "BPM"
+
+[node name="Panel" type="PanelContainer" parent="MainPanel/MainVBox/EditorVBox/Controls"]
+offset_left = 1024.0
+offset_right = 1152.0
+offset_bottom = 40.0
+size_flags_horizontal = 10
+
+[node name="PlaybackControls" type="HBoxContainer" parent="MainPanel/MainVBox/EditorVBox/Controls/Panel"]
+offset_right = 128.0
+offset_bottom = 40.0
+
+[node name="ReplayButton" type="Button" parent="MainPanel/MainVBox/EditorVBox/Controls/Panel/PlaybackControls"]
+offset_right = 40.0
+offset_bottom = 40.0
+tooltip_text = "Play from the start"
+focus_neighbor_left = NodePath("../../../BPMContainer/BPMField")
+focus_neighbor_top = NodePath("../../../../Staff/StaffScroll")
+focus_neighbor_right = NodePath("../PlayEarlyButton")
+shortcut = SubResource("Shortcut_rtrfc")
+icon = ExtResource("4_op3f3")
+icon_alignment = 1
+
+[node name="PlayEarlyButton" type="Button" parent="MainPanel/MainVBox/EditorVBox/Controls/Panel/PlaybackControls"]
+offset_left = 44.0
+offset_right = 84.0
+offset_bottom = 40.0
+tooltip_text = "Play from 1 measure ago"
+focus_neighbor_left = NodePath("../ReplayButton")
+focus_neighbor_top = NodePath("../../../../Staff/StaffScroll")
+focus_neighbor_right = NodePath("../PlayButton")
+shortcut = SubResource("Shortcut_hreco")
+icon = ExtResource("5_mxm0q")
+icon_alignment = 1
+
+[node name="PlayButton" type="Button" parent="MainPanel/MainVBox/EditorVBox/Controls/Panel/PlaybackControls"]
+unique_name_in_owner = true
+offset_left = 88.0
+offset_right = 128.0
+offset_bottom = 40.0
+tooltip_text = "Toggle Playback"
+focus_neighbor_left = NodePath("../PlayEarlyButton")
+focus_neighbor_top = NodePath("../../../../Staff/StaffScroll")
+toggle_mode = true
+shortcut = SubResource("Shortcut_h3luc")
+icon = ExtResource("6_ydjqa")
+icon_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="NewChartDialog" type="Window" parent="."]
+title = "New Chart"
+position = Vector2i(150, 50)
+size = Vector2i(500, 409)
+visible = false
+
+[node name="Base" parent="NewChartDialog" instance=ExtResource("5_kd0ym")]
+
+[node name="OpenChartDialog" type="Window" parent="."]
+title = "OpenChart"
+position = Vector2i(150, 50)
+size = Vector2i(500, 409)
+visible = false
+
+[node name="Base" parent="OpenChartDialog" instance=ExtResource("6_oylum")]
+
+[node name="SaveChangesDialog" type="Popup" parent="."]
+title = "Unsaved Changes"
+position = Vector2i(500, 250)
+size = Vector2i(200, 100)
+borderless = false
+metadata/return = -1
+
+[node name="Control" parent="SaveChangesDialog" instance=ExtResource("9_4bdoc")]
+
+[connection signal="index_pressed" from="MainPanel/MainVBox/MenuBar/File" to="." method="_on_file_index_pressed"]
+[connection signal="gui_input" from="MainPanel/MainVBox/EditorVBox/Staff/Ruler" to="." method="_on_ruler_gui_input"]
+[connection signal="gui_input" from="MainPanel/MainVBox/EditorVBox/Staff/Base/StaffPanel" to="." method="_on_staff_panel_gui_input"]
+[connection signal="value_changed" from="MainPanel/MainVBox/EditorVBox/Staff/StaffScroll" to="." method="_on_staff_scroll_value_changed"]
+[connection signal="text_submitted" from="MainPanel/MainVBox/EditorVBox/Controls/BPMContainer/BPMField" to="." method="_on_bpm_field_text_submitted"]
+[connection signal="pressed" from="MainPanel/MainVBox/EditorVBox/Controls/Panel/PlaybackControls/ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="MainPanel/MainVBox/EditorVBox/Controls/Panel/PlaybackControls/PlayEarlyButton" to="." method="_on_play_early_button_pressed"]
+[connection signal="toggled" from="MainPanel/MainVBox/EditorVBox/Controls/Panel/PlaybackControls/PlayButton" to="." method="_on_play_button_toggled"]
+[connection signal="close_requested" from="SaveChangesDialog" to="SaveChangesDialog/Control" method="_on_save_changes_dialog_close_requested"]

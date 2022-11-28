@@ -1,0 +1,375 @@
+[gd_scene load_steps=28 format=3 uid="uid://bfufcy60fip3q"]
+
+[ext_resource type="Script" path="res://scripts/Conductor.gd" id="1_e4rug"]
+[ext_resource type="AudioStream" uid="uid://td7x1tcxskao" path="res://tracks/audio.ogg" id="2_cij7w"]
+[ext_resource type="Environment" uid="uid://b4jpufi6f65qy" path="res://resources/enviroment.tres" id="3_cueke"]
+[ext_resource type="Script" path="res://scripts/SnapBack.gd" id="4_j3v61"]
+[ext_resource type="Script" path="res://scripts/SnapBackRot.gd" id="4_r3n3c"]
+[ext_resource type="Script" path="res://scripts/DisplayOnKey.gd" id="5_lf1wk"]
+[ext_resource type="Material" uid="uid://dt8j3qo25yv3q" path="res://resources/note.tres" id="5_vdvig"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m0upa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhp70"]
+specular_mode = 1
+metallic_specular = 0.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+uv1_scale = Vector3(-1, -1, -1)
+disable_receive_shadows = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_xx5xr"]
+material = SubResource("StandardMaterial3D_dhp70")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imbuo"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="Curve" id="Curve_gwp0t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.91057, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kxue4"]
+curve = SubResource("Curve_gwp0t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vfnuw"]
+emission_shape = 3
+emission_box_extents = Vector3(0.225, 0.225, 0)
+direction = Vector3(0, 0, 1)
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 2.0
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_kxue4")
+
+[sub_resource type="SphereMesh" id="SphereMesh_xp08k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxqvg"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yl6yd"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_01r2o"]
+material = SubResource("StandardMaterial3D_yl6yd")
+text = "J"
+font_size = 32
+depth = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_4tr5g"]
+material = ExtResource("5_vdvig")
+text = "H"
+font_size = 32
+depth = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_3lbg3"]
+material = SubResource("StandardMaterial3D_yl6yd")
+text = "L"
+font_size = 32
+depth = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_toy0r"]
+material = SubResource("StandardMaterial3D_yl6yd")
+text = "F"
+font_size = 32
+depth = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_xcwam"]
+material = ExtResource("5_vdvig")
+text = "G"
+font_size = 32
+depth = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_qybk3"]
+material = SubResource("StandardMaterial3D_yl6yd")
+text = "S"
+font_size = 32
+depth = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_npwwa"]
+material = SubResource("StandardMaterial3D_yl6yd")
+text = "E"
+font_size = 32
+depth = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_ute5h"]
+material = SubResource("StandardMaterial3D_yl6yd")
+text = "I"
+font_size = 32
+depth = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_347aw"]
+material = SubResource("StandardMaterial3D_yl6yd")
+text = "D"
+font_size = 32
+depth = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_td3ug"]
+material = SubResource("StandardMaterial3D_yl6yd")
+text = "K"
+font_size = 32
+depth = 0.0
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_e4rug")
+autoplay = false
+
+[node name="Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cij7w")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_cueke")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(0.999999, 0, 0, 0, 0.995001, -0.0998672, 0, 0.0998672, 0.995001, 0, 0.5, 0)
+script = ExtResource("4_r3n3c")
+velocity = Vector3(0.514157, 0, 0)
+accel = 5
+active = true
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.49159, 0)
+attributes = SubResource("CameraAttributesPractical_m0upa")
+fov = 90.0
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" type="Label" parent="HUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 45
+text = "0"
+horizontal_alignment = 3
+
+[node name="Cube" type="Node3D" parent="."]
+
+[node name="F" type="MeshInstance3D" parent="Cube"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_xx5xr")
+skeleton = NodePath("../../CameraPivot/Camera3D")
+
+[node name="FT" type="MeshInstance3D" parent="Cube"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+mesh = SubResource("BoxMesh_xx5xr")
+skeleton = NodePath("../../CameraPivot/Camera3D")
+script = ExtResource("4_j3v61")
+
+[node name="FD" type="MeshInstance3D" parent="Cube"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+mesh = SubResource("BoxMesh_xx5xr")
+skeleton = NodePath("../../CameraPivot/Camera3D")
+script = ExtResource("4_j3v61")
+
+[node name="FL" type="MeshInstance3D" parent="Cube"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+mesh = SubResource("BoxMesh_xx5xr")
+skeleton = NodePath("../../CameraPivot/Camera3D")
+script = ExtResource("4_j3v61")
+
+[node name="FTL" type="MeshInstance3D" parent="Cube"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
+mesh = SubResource("BoxMesh_xx5xr")
+skeleton = NodePath("../../CameraPivot/Camera3D")
+script = ExtResource("4_j3v61")
+
+[node name="E" type="GPUParticles3D" parent="Cube/FTL"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.25)
+material_override = SubResource("StandardMaterial3D_imbuo")
+amount = 100
+lifetime = 0.25
+process_material = SubResource("ParticleProcessMaterial_vfnuw")
+draw_pass_1 = SubResource("SphereMesh_xp08k")
+script = ExtResource("5_lf1wk")
+key = 69
+metadata/_edit_lock_ = true
+
+[node name="F" type="GPUParticles3D" parent="Cube/FTL"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.25, 0, 0)
+material_override = SubResource("StandardMaterial3D_imbuo")
+amount = 100
+lifetime = 0.25
+process_material = SubResource("ParticleProcessMaterial_vfnuw")
+draw_pass_1 = SubResource("SphereMesh_xp08k")
+script = ExtResource("5_lf1wk")
+key = 70
+metadata/_edit_lock_ = true
+
+[node name="FDL" type="MeshInstance3D" parent="Cube"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0.5)
+mesh = SubResource("BoxMesh_xx5xr")
+skeleton = NodePath("../../CameraPivot/Camera3D")
+script = ExtResource("4_j3v61")
+
+[node name="S" type="GPUParticles3D" parent="Cube/FDL"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.25, 0, 0)
+material_override = SubResource("StandardMaterial3D_imbuo")
+amount = 100
+lifetime = 0.25
+process_material = SubResource("ParticleProcessMaterial_vfnuw")
+draw_pass_1 = SubResource("SphereMesh_xp08k")
+script = ExtResource("5_lf1wk")
+key = 83
+metadata/_edit_lock_ = true
+
+[node name="D" type="GPUParticles3D" parent="Cube/FDL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+material_override = SubResource("StandardMaterial3D_imbuo")
+amount = 100
+lifetime = 0.25
+process_material = SubResource("ParticleProcessMaterial_vfnuw")
+draw_pass_1 = SubResource("SphereMesh_xp08k")
+script = ExtResource("5_lf1wk")
+key = 68
+metadata/_edit_lock_ = true
+
+[node name="FR" type="MeshInstance3D" parent="Cube"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+mesh = SubResource("BoxMesh_xx5xr")
+skeleton = NodePath("../../CameraPivot/Camera3D")
+script = ExtResource("4_j3v61")
+
+[node name="FTR" type="MeshInstance3D" parent="Cube"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.5)
+mesh = SubResource("BoxMesh_xx5xr")
+skeleton = NodePath("../../CameraPivot/Camera3D")
+script = ExtResource("4_j3v61")
+
+[node name="J" type="GPUParticles3D" parent="Cube/FTR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.25, 0, 0)
+material_override = SubResource("StandardMaterial3D_imbuo")
+amount = 100
+lifetime = 0.25
+process_material = SubResource("ParticleProcessMaterial_vfnuw")
+draw_pass_1 = SubResource("SphereMesh_xp08k")
+script = ExtResource("5_lf1wk")
+key = 74
+metadata/_edit_lock_ = true
+
+[node name="I" type="GPUParticles3D" parent="Cube/FTR"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.25)
+material_override = SubResource("StandardMaterial3D_imbuo")
+amount = 100
+lifetime = 0.25
+process_material = SubResource("ParticleProcessMaterial_vfnuw")
+draw_pass_1 = SubResource("SphereMesh_xp08k")
+script = ExtResource("5_lf1wk")
+key = 73
+metadata/_edit_lock_ = true
+
+[node name="FDR" type="MeshInstance3D" parent="Cube"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+mesh = SubResource("BoxMesh_xx5xr")
+skeleton = NodePath("../../CameraPivot/Camera3D")
+script = ExtResource("4_j3v61")
+
+[node name="K" type="GPUParticles3D" parent="Cube/FDR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+material_override = SubResource("StandardMaterial3D_imbuo")
+amount = 100
+lifetime = 0.25
+process_material = SubResource("ParticleProcessMaterial_vfnuw")
+draw_pass_1 = SubResource("SphereMesh_xp08k")
+script = ExtResource("5_lf1wk")
+key = 75
+metadata/_edit_lock_ = true
+
+[node name="L" type="GPUParticles3D" parent="Cube/FDR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.25, 0, 0)
+material_override = SubResource("StandardMaterial3D_imbuo")
+amount = 100
+lifetime = 0.25
+process_material = SubResource("ParticleProcessMaterial_vfnuw")
+draw_pass_1 = SubResource("SphereMesh_xp08k")
+script = ExtResource("5_lf1wk")
+key = 76
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_wxqvg")
+operation = 2
+size = Vector3(30, 1, 30)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2"]
+operation = 2
+size = Vector3(15, 2, 15)
+
+[node name="Keybinds" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1, 0.5, -0.5)
+mesh = SubResource("TextMesh_01r2o")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(0.939693, -0.34202, -1.49502e-08, 0, -4.37114e-08, 1, -0.34202, -0.939693, -4.10753e-08, 1, 0.5, -1)
+mesh = SubResource("TextMesh_4tr5g")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(0.939693, -0.34202, -1.49502e-08, 0, -4.37114e-08, 1, -0.34202, -0.939693, -4.10753e-08, -1, 0.5, 1)
+mesh = SubResource("TextMesh_4tr5g")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1, 0.5, 0.5)
+mesh = SubResource("TextMesh_3lbg3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 0.5, -0.5)
+mesh = SubResource("TextMesh_toy0r")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(0.939693, 0.34202, 1.49502e-08, 0, -4.37114e-08, 1, 0.34202, -0.939693, -4.10753e-08, -1, 0.5, -1)
+mesh = SubResource("TextMesh_xcwam")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(0.939693, 0.34202, 1.49502e-08, 0, -4.37114e-08, 1, 0.34202, -0.939693, -4.10753e-08, 1, 0.5, 1)
+mesh = SubResource("TextMesh_xcwam")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 0.5, 0.5)
+mesh = SubResource("TextMesh_qybk3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.5, 0.5, -1)
+mesh = SubResource("TextMesh_npwwa")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.5, 0.5, -1)
+mesh = SubResource("TextMesh_ute5h")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.5, 0.5, 1)
+mesh = SubResource("TextMesh_347aw")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Keybinds"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.5, 0.5, 1)
+mesh = SubResource("TextMesh_td3ug")
+skeleton = NodePath("../..")

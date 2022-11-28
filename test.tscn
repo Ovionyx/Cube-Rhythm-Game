@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdfsfnajjwdld"]
+
+[ext_resource type="Script" path="res://scripts/SnapBackRot.gd" id="1_ff06c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dtelh"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.970942, -0.181149, -0.156388, 0.156389, 0.974922, -0.158331, 0.181148, 0.129273, 0.974923, 0.0480226, -0.0480225, -0.0480225)
+mesh = SubResource("BoxMesh_dtelh")
+script = ExtResource("1_ff06c")
+velocity = Vector3(0.93099, -0.93099, 0.93099)
+active = true

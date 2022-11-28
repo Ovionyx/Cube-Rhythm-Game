@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="63.999996"
+   height="63.999996"
+   viewBox="0 0 16.933332 16.933332"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="replay.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#000000"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid256"
+       empspacing="4"
+       originx="8.4666665"
+       originy="8.4666665" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect519"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,1.4199029,0,1 @ F,0,1,1,0,1.4199029,0,1 @ F,0,1,1,0,1.4199029,0,1"
+       unit="px"
+       method="auto"
+       mode="F"
+       radius="0"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#ffffff;stroke-width:1.32292;stroke-linecap:round;stroke-linejoin:round"
+       d="M 7.0446961,13.038414 13.592803,9.1865859 a 0.83523702,0.83523702 90 0 0 0,-1.4398388 L 7.0446961,3.8949195 A 0.81210786,0.81210786 150.23277 0 0 5.8208332,4.594903 v 7.743527 a 0.81210785,0.81210785 29.767227 0 0 1.2238629,0.699984 z"
+       id="path362"
+       sodipodi:nodetypes="cccc"
+       inkscape:original-d="M 5.8208332,13.758333 14.816666,8.4666665 5.8208332,3.1750001 Z"
+       inkscape:path-effect="#path-effect519" />
+    <ellipse
+       style="fill:#ffffff;stroke-width:1.65365;stroke-linecap:round;stroke-linejoin:round"
+       id="path1685"
+       cx="3.9687498"
+       cy="8.4666662"
+       rx="1.3229166"
+       ry="1.3229167" />
+  </g>
+</svg>
