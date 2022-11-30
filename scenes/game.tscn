@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bfufcy60fip3q"]
+[gd_scene load_steps=31 format=3 uid="uid://bfufcy60fip3q"]
 
 [ext_resource type="Script" path="res://scripts/Conductor.gd" id="1_e4rug"]
 [ext_resource type="AudioStream" uid="uid://td7x1tcxskao" path="res://tracks/audio.ogg" id="2_cij7w"]
@@ -52,8 +52,9 @@ shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yl6yd"]
+albedo_color = Color(0, 0.75, 1, 1)
 emission_enabled = true
-emission = Color(1, 1, 1, 1)
+emission = Color(0, 0.75, 1, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_01r2o"]
 material = SubResource("StandardMaterial3D_yl6yd")
@@ -72,6 +73,11 @@ material = SubResource("StandardMaterial3D_yl6yd")
 text = "L"
 font_size = 32
 depth = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q31de"]
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_toy0r"]
 material = SubResource("StandardMaterial3D_yl6yd")
@@ -97,11 +103,21 @@ text = "E"
 font_size = 32
 depth = 0.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6btv"]
+albedo_color = Color(1, 0.5, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.5, 0, 1)
+
 [sub_resource type="TextMesh" id="TextMesh_ute5h"]
 material = SubResource("StandardMaterial3D_yl6yd")
 text = "I"
 font_size = 32
 depth = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5js5"]
+albedo_color = Color(1, 0, 0.25, 1)
+emission_enabled = true
+emission = Color(1, 0, 0.25, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_347aw"]
 material = SubResource("StandardMaterial3D_yl6yd")
@@ -126,9 +142,9 @@ stream = ExtResource("2_cij7w")
 environment = ExtResource("3_cueke")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(0.999999, 0, 0, 0, 0.995001, -0.0998672, 0, 0.0998672, 0.995001, 0, 0.5, 0)
+transform = Transform3D(0.999999, 0, 0, 0, 0.983838, -0.179061, 0, 0.179061, 0.983838, 0, 0.5, 0)
 script = ExtResource("4_r3n3c")
-velocity = Vector3(0.514157, 0, 0)
+velocity = Vector3(0.380788, 0, 0)
 accel = 5
 active = true
 
@@ -333,6 +349,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1, 0.5, 0.5)
 mesh = SubResource("TextMesh_3lbg3")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_q31de")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Keybinds"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 0.5, -0.5)
@@ -353,23 +370,28 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 0.5, 0.5)
 mesh = SubResource("TextMesh_qybk3")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_q31de")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Keybinds"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.5, 0.5, -1)
 mesh = SubResource("TextMesh_npwwa")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_a6btv")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Keybinds"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.5, 0.5, -1)
 mesh = SubResource("TextMesh_ute5h")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_e5js5")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="Keybinds"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.5, 0.5, 1)
 mesh = SubResource("TextMesh_347aw")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_a6btv")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="Keybinds"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.5, 0.5, 1)
 mesh = SubResource("TextMesh_td3ug")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_e5js5")

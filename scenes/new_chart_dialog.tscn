@@ -89,7 +89,7 @@ caret_blink = true
 caret_blink_interval = 0.5
 
 [node name="AudioButton" type="Button" parent="VBoxContainer/AudioContainer"]
-custom_minimum_size = Vector2i(50, 0)
+custom_minimum_size = Vector2(50, 0)
 offset_left = 1084.0
 offset_right = 1142.0
 offset_bottom = 38.0
